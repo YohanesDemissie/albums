@@ -1,22 +1,21 @@
-# learn-react-native
-import { Text } from 'react-native // this is an example of destructured import to import "text" directly out of the library
+#React 
+Using react library to create components and compile them into one application
 
-#App Registry
-only used for the head componenet not for the child components
+#React Native
+using this Library for mobile freindly styling and jsx tags
 
-#Display
-All text are, by default, placed at top left corner of screen and is repositioned and styled using "styles" component nested within its
+#Axios
+used to fetch 'GET' asynchronous request data for HTTP request
+npm install --save axios
 
-#Styling
-<Text style={textStyle}>Albums</Text>
+#Properties
+Dynamically rendered header text using react library tools for properties and display
 
-the curly brackets are "properties"
+#State
+Dynamically rendering content to the DOM based on UI and event listeners like "component will mount" and
+this.setState...
 
-#Justify Content
-great way to re arrange content within a flex-box
+#Key
+applied unique key to each element in array of object to differentiate between specific data content
 
-#View
-Allows us to wrap styling around our text
 
-#Dynamic Properties (Section 6: Lesson 28)
-passing in "props" in component allows us to dynamically display property values depending on which component the user is interfacing with 
