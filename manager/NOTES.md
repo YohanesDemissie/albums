@@ -13,6 +13,16 @@ responsible for the UI and what the user sees
 responsible for state and how the user interacts with Reacts visible components
 We want to make our components as simple and minimal memory/runtime while having REDUX do all the heavy lifting
 
+#React Native Router Flux
+Scene, Router
+Router is the parent element, one per component
+Scene is the child where all the navigating happens
+ #Scene
+ has a key work that must be unique,
+ this is the key used in actions to navigate to that component 
+ a component attribute to navigate to,
+ and a title attribute that works like a header
+
 #Login Form.js
 Handles the input forms/ui and state change on user interface through imported "ACTIONS"
 
