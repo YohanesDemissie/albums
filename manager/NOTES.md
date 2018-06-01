@@ -43,3 +43,7 @@ action is an object with a 'type' property OR functions will be called with 'dis
 #Eslint Configurations!!
 checkout lesson 15, lecture 112 at 1 minute and 30 seconds
 
+
+#Master Reference
+https://github.com/StephenGrider/ReactNativeReduxCasts
+
