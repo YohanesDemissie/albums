@@ -14,7 +14,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 300
+    // marginTop: 300 to center the loader on entire screen but currently placed in button spacing
   }
 }
 
