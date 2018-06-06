@@ -47,3 +47,9 @@ checkout lesson 15, lecture 112 at 1 minute and 30 seconds
 #Master Reference
 https://github.com/StephenGrider/ReactNativeReduxCasts
 
+#Picker from 'react-native'
+For selecting from a fixed location on screen list to scroll thorugh. look to section 17, lesson 137 for further detail and demo
+
+#TutorActions
+'value', snapshot is a key word that snapshots values on to the DOM
+Firebase and redux meet at this line to render data from the data into our app

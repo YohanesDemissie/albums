@@ -4,7 +4,7 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER
-} from '../actions/types' //look for type here in errors. console.log to make sure it isn't 'undefined'
+} from '../actions/types'
 
 const INITIAL_STATE = {
   email: '',
@@ -12,10 +12,9 @@ const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false
-}; //setting initial state to blank email/password input
+};
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action, 'is you working')
 
   switch (action.type) {
     case EMAIL_CHANGED:
