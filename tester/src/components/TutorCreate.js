@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { tutorUpdate, tutorCreate } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Button } from './common';
+import TutorForm from './TutorForm'
 
 class TutorCreate extends Component {
   onButtonPress() {
-    const { name, phone, shift } = this.props;
+    const { name, number, subject } = this.props;
 
-    this.props.tutorCreate({ name, phone, shift: shift || 'Monday' });
+    this.props.tutorCreate({ name, number, subject: subject || 'Monday' });
   }
 
   render() {
@@ -16,41 +16,7 @@ class TutorCreate extends Component {
 
     return (
       <Card>
-        <CardSection>
-          <Input
-            label="Name"
-            placeholder="Jane"
-            value={this.props.name}
-            onChangeText={value => this.props.tutorUpdate({ prop: 'name', value })}
-          />
-        </CardSection>
-
-        <CardSection>
-          <Input
-            label="Phone"
-            placeholder="555-555-5555"
-            value={this.props.phone}
-            onChangeText={value => this.props.tutorUpdate({ prop: 'phone', value })}
-          />
-        </CardSection>
-
-        <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.pickerTextStyle}>Shift</Text>
-          <Picker
-            style={{ flex: 1 }}
-            selectedValue={this.props.shift}
-            onValueChange={value => this.props.tutorUpdate({ prop: 'shift', value })}
-          >
-            <Picker.Item label="Monday" value="Monday" />
-            <Picker.Item label="Tuesday" value="Tuesday" />
-            <Picker.Item label="Wednesday" value="Wednesday" />
-            <Picker.Item label="Thursday" value="Thursday" />
-            <Picker.Item label="Friday" value="Friday" />
-            <Picker.Item label="Saturday" value="Saturday" />
-            <Picker.Item label="Sunday" value="Sunday" />
-          </Picker>
-        </CardSection>
-
+        <TutorForm {...this.props} />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
             Create
@@ -61,17 +27,10 @@ class TutorCreate extends Component {
   }
 }
 
-const styles = {
-  pickerTextStyle: {
-    fontSize: 18,
-    paddingLeft: 20
-  }
-};
-
 const mapStateToProps = (state) => {
-  const { name, phone, shift } = state.tutorForm;
+  const { name, number, subject } = state.tutorForm;
 
-  return { name, phone, shift };
+  return { name, number, subject };
 };
 
 export default connect(mapStateToProps, {

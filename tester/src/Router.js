@@ -3,6 +3,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import TutorList from './components/TutorList';
 import TutorCreate from './components/TutorCreate';
+import TutorEdit from './components/TutorEdit'
 
 const RouterComponent = () => {
   return (
@@ -21,6 +22,7 @@ const RouterComponent = () => {
           initial
         />
         <Scene key="tutorCreate" component={TutorCreate} title="Create Tutor" />
+        <Scene key="tutorEdit" component={TutorEdit} title="Edit Tutor" />
       </Scene>
     </Router>
   );

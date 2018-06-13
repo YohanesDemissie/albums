@@ -13,12 +13,12 @@ export const tutorUpdate = ({ prop, value }) => {
   };
 };
 
-export const tutorCreate = ({ name, phone, shift }) => {
+export const tutorCreate = ({ name, number, subject }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/tutors`)
-      .push({ name, phone, shift })
+      .push({ name, number, subject })
       .then(() => {
         dispatch({ type: TUTOR_CREATE });
         Actions.tutorList({ type: 'reset' });
