@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate, employeeCreate } from '../actions';
+import { tutorUpdate, tutorCreate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
-class EmployeeCreate extends Component {
+class TutorCreate extends Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
-    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+    this.props.tutorCreate({ name, phone, shift: shift || 'Monday' });
   }
 
   render() {
-    console.log(this.props.employee);
+    console.log(this.props.tutor);
 
     return (
       <Card>
@@ -21,7 +21,7 @@ class EmployeeCreate extends Component {
             label="Name"
             placeholder="Jane"
             value={this.props.name}
-            onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}
+            onChangeText={value => this.props.tutorUpdate({ prop: 'name', value })}
           />
         </CardSection>
 
@@ -30,7 +30,7 @@ class EmployeeCreate extends Component {
             label="Phone"
             placeholder="555-555-5555"
             value={this.props.phone}
-            onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value })}
+            onChangeText={value => this.props.tutorUpdate({ prop: 'phone', value })}
           />
         </CardSection>
 
@@ -39,7 +39,7 @@ class EmployeeCreate extends Component {
           <Picker
             style={{ flex: 1 }}
             selectedValue={this.props.shift}
-            onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
+            onValueChange={value => this.props.tutorUpdate({ prop: 'shift', value })}
           >
             <Picker.Item label="Monday" value="Monday" />
             <Picker.Item label="Tuesday" value="Tuesday" />
@@ -69,11 +69,11 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { name, phone, shift } = state.employeeForm;
+  const { name, phone, shift } = state.tutorForm;
 
   return { name, phone, shift };
 };
 
 export default connect(mapStateToProps, {
-  employeeUpdate, employeeCreate
-})(EmployeeCreate);
+  tutorUpdate, tutorCreate
+})(TutorCreate);
