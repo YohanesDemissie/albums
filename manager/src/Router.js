@@ -21,17 +21,18 @@ const RouterComponent = () => {
           onRight={() => Actions.tutorList()}
           leftTitle="Tutor Create"
           onLeft={() => Actions.tutorCreate()}
-          />
+        />
+        
         <Scene
           key="tutorCreate"
           component={TutorCreate}
           title="Create Tutor Account"
         />
-        
+
         <Scene
           key="tutorList"
           component={TutorList}
-          title
+          title="Tutor List"
         />
         </Scene>
       </Scene>

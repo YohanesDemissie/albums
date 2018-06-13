@@ -1,7 +1,7 @@
 import {
   TUTOR_UPDATE,
   TUTOR_CREATE
-} from '../actions/types'
+} from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',

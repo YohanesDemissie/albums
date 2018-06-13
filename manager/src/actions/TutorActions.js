@@ -1,10 +1,10 @@
-import firebase from 'firebase'
-import { Actions } from 'react-native-router-flux'
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import {
   TUTOR_UPDATE,
   TUTOR_CREATE,
   TUTORS_FETCH_SUCCESS
-} from './types'
+} from './types';
 
 export const tutorUpdate = ({ prop, value }) => {
   return {
@@ -19,10 +19,10 @@ export const tutorCreate = ({ name, number, subject }) => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/tutors`)
       .push({ name, number, subject })
-        .then(() => {
-          dispatch({ type: TUTOR_CREATE });
-          Actions.tutorList({ type: 'reset'});
-        });
+      .then(() => {
+        dispatch({ type: TUTOR_CREATE });
+        Actions.tutorList({ type: 'reset' });
+      });
   };
 };
 
@@ -33,6 +33,6 @@ export const tutorsFetch = () => {
     firebase.database().ref(`/users/${currentUser.uid}/tutors`)
       .on('value', snapshot => {
         dispatch({ type: TUTORS_FETCH_SUCCESS, payload: snapshot.val() });
-      })
+      });
   };
 };
