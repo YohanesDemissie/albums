@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import {
   TUTOR_UPDATE,
   TUTOR_CREATE,
-  TUTORS_FETCH_SUCCESS
+  TUTORS_FETCH_SUCCESS,
+  TUTOR_SAVE_SUCCESS
 } from './types';
 
 export const tutorUpdate = ({ prop, value }) => {
@@ -36,3 +37,28 @@ export const tutorsFetch = () => {
       });
   };
 };
+
+export const tutorSave = ({ name, number, subject, uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/tutors/${uid}`)
+      .set({ name, number, subject })
+      .then(() => {
+        dispatch({ type: TUTOR_SAVE_SUCCESS })
+        Actions.tutorList({ type: 'reset'});
+      });
+    };
+};
+
+export const tutorDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/tutors/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.tutorList({ type: 'reset' })
+      })
+  }
+}

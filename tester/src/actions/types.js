@@ -7,3 +7,4 @@ export const LOGIN_USER = 'login_user';
 export const TUTOR_UPDATE = 'tutor_update';
 export const TUTOR_CREATE = 'tutor_create';
 export const TUTORS_FETCH_SUCCESS = 'tutors_fetch_success';
+export const TUTOR_SAVE_SUCCESS = 'tutor_save_success'

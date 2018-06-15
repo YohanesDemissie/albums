@@ -1,11 +1,14 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Communications from 'react-native-communications'
 import TutorForm from './TutorForm'
-import { tutorUpdate } from '../actions'
-import { Card, CardSection, Button } from './common'
+import { tutorUpdate, tutorSave, tutorDelete } from '../actions'
+import { Card, CardSection, Button, Confirm } from './common'
 
 class TutorEdit extends Component {
+  state= { showModal: false };
+
   componentWillMount() {
     _.each(this.props.tutor, (value, prop) => {
       this.props.tutorUpdate({ prop, value });
@@ -14,8 +17,28 @@ class TutorEdit extends Component {
 
   onButtonPress() {
     const { name, number, subject } = this.props;
-    console.log(name, number, subject);
+
+    this.props.tutorSave({ name, number, subject, uid: this.props.tutor.uid });
+
   }
+
+  onTextPress() {
+    const { number, subject } = this.props;
+
+    Communications.text(number, `You've been requested for a tutoring session on ${subject}`);
+  }
+
+  onAccept() {
+    const { uid } = this.props.tutor
+
+    this.props.tutorDelete({ uid })
+
+  }
+
+  onDecline() {
+    this.setState({ showModal: false })
+  }
+
   render() {
     return(
       <Card>
@@ -25,6 +48,25 @@ class TutorEdit extends Component {
             Save Changes
           </Button>
         </CardSection>
+
+        <CardSection>
+          <Button onPress={this.onTextPress.bind(this)}>
+            Contact
+          </Button>
+        </CardSection>
+
+        <CardSection>
+          <Button onPress={() => this.setState({ showModal: !this.state.showModal })} >
+            Delete
+          </Button>
+        </CardSection>
+        <Confirm
+        visible={this.state.showModal}
+        onAccept={this.onAccept.bind(this)}
+        onDecline={this.onDecline.bind(this)}
+        >
+          Pleaser verify the pending request for this tutor
+        </Confirm>
       </Card>
     )
   }
@@ -36,4 +78,4 @@ const mapStateToProps = (state) => {
   return { name, number, subject };
 };
 
-export default connect(mapStateToProps, { tutorUpdate })(TutorEdit);
+export default connect(mapStateToProps, { tutorUpdate, tutorSave, tutorDelete })(TutorEdit);
