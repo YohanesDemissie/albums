@@ -16,9 +16,9 @@ class TutorEdit extends Component {
   }
 
   onButtonPress() {
-    const { name, number, subject } = this.props;
+    const { name, number, subject, major, school, classStanding, bio } = this.props;
 
-    this.props.tutorSave({ name, number, subject, uid: this.props.tutor.uid });
+    this.props.tutorSave({ name, number, subject, major, school, classStanding, bio, uid: this.props.tutor.uid });
 
   }
 
@@ -73,9 +73,9 @@ class TutorEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name, number, subject } = state.tutorForm;
+  const { name, number, subject, major, school, classStanding, bio } = state.tutorForm;
 
-  return { name, number, subject };
+  return { name, number, subject, major, school, classStanding, bio };
 };
 
 export default connect(mapStateToProps, { tutorUpdate, tutorSave, tutorDelete })(TutorEdit);

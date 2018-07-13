@@ -7,7 +7,11 @@ import {
 const INITIAL_STATE = {
   name: '',
   number: '',
-  subject: ''
+  subject: '',
+  major: '',
+  school: '',
+  classStanding: '',
+  bio: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

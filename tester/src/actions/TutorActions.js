@@ -14,12 +14,12 @@ export const tutorUpdate = ({ prop, value }) => {
   };
 };
 
-export const tutorCreate = ({ name, number, subject }) => {
+export const tutorCreate = ({ name, number, subject, major, school, classStanding, bio }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/tutors`)
-      .push({ name, number, subject })
+      .push({ name, number, subject, major, school, classStanding, bio })
       .then(() => {
         dispatch({ type: TUTOR_CREATE });
         Actions.tutorList({ type: 'reset' });
@@ -38,12 +38,12 @@ export const tutorsFetch = () => {
   };
 };
 
-export const tutorSave = ({ name, number, subject, uid }) => {
+export const tutorSave = ({ name, number, subject, major, school, classStanding, bio, uid }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/tutors/${uid}`)
-      .set({ name, number, subject })
+      .set({ name, number, subject, major, school, classStanding, bio })
       .then(() => {
         dispatch({ type: TUTOR_SAVE_SUCCESS })
         Actions.tutorList({ type: 'reset'});

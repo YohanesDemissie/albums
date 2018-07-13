@@ -6,9 +6,9 @@ import TutorForm from './TutorForm'
 
 class TutorCreate extends Component {
   onButtonPress() {
-    const { name, number, subject } = this.props;
+    const { name, number, subject, major, school, classStanding, bio } = this.props;
 
-    this.props.tutorCreate({ name, number, subject: subject || 'Monday' });
+    this.props.tutorCreate({ name, number, major, school, classStanding, bio, subject: subject || 'Monday' });
   }
 
   render() {
@@ -28,9 +28,9 @@ class TutorCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name, number, subject } = state.tutorForm;
+  const { name, number, subject, major, school, classStanding, bio } = state.tutorForm;
 
-  return { name, number, subject };
+  return { name, number, subject, major, school, classStanding, bio };
 };
 
 export default connect(mapStateToProps, {

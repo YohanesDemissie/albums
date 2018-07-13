@@ -9,14 +9,14 @@ class ListItem extends Component {
   }
 
   render() {
-    const { name } = this.props.tutor;
+    const { subject } = this.props.tutor;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
         <View>
           <CardSection>
             <Text style={styles.titleStyle}>
-              {name}
+              {subject}
             </Text>
           </CardSection>
         </View>
