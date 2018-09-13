@@ -29,6 +29,8 @@ const styles = {
     flex: 2
   },
   labelStyle: {
+    color: '#ffaf11',
+    placeholderTextColor: '#000',
     fontSize: 18,
     paddingLeft: 20,
     flex: 1

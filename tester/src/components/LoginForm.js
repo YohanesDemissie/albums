@@ -36,7 +36,8 @@ class LoginForm extends Component {
       <Card>
         <CardSection>
           <Input
-            label="Email"
+          label="Email"
+            // source={require('../images/login-icon-two.png')}
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
